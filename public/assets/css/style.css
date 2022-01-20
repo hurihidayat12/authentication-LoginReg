@@ -1,0 +1,37 @@
+.bg-dark{
+    background-color: darkgoldenrod !important;
+}
+
+.bg-form{
+    background-color: rgb(231, 205, 139);
+}
+
+.color-bg{
+    background-color:rgb(241, 241, 241);
+}
+
+
+
+.text-dark{
+    color: rgb(241, 241, 241) !important;
+}
+
+.text-con{
+    color: darkgoldenrod;
+}
+
+.navbar {
+    height: 9vh;
+    font-size: 20px
+
+}
+
+.container-fluid {
+    height: 91vh;
+}
+
+
+textarea {
+    height: 173px;
+    resize: none;
+}

@@ -1,0 +1,142 @@
+<html>
+  <head>
+    <title>Creating Blog Page</title>
+    <link rel="stylesheet" href="../public/assets/css/style_1.css" />
+       <link rel="stylesheet" href="../public/assets/css/style_1.css" />
+  </head>
+  <body>
+    
+  <!-- NavBar -->
+    
+    <nav>
+      <div class="left">
+          <a href="/"> 
+              <img  src="../public/assets/images/logo1.png" alt="maju terus">
+          </a>
+          <ul>
+              <li>
+                  <a href="/">Beranda</a>
+              </li>
+              <li> 
+                  <a href="/blog">Blog</a>
+              </li>
+              <li> 
+                  <a href="/">Service</a>
+              </li>
+              <li> 
+                  <a href="/">Project</a>
+              </li>
+          </ul>
+              {{#if isLogin}}
+                  <ul style="margin-left: 260px;">
+                    <li> 
+                        <a href="/login">Hallo, {{user.name}}</a>
+                    </li>
+                    <li> 
+                        <a href="/logout">Logout</a>
+                    </li>
+                  </ul>
+              {{else}}
+                  <ul style="margin-left: 260px;">
+                    <li> 
+                        <a href="/login">Login</a>
+                    </li>
+                    <li> 
+                        <a href="/register">register</a>
+                    </li>
+                  </ul>
+               {{/if}}
+      </div>
+
+      <div class="right">
+          <a href="/contact">Contact</a>
+      </div>
+    </nav>
+
+
+      {{#if messages.success}}
+        <div class="alert alert-success" role="alert">
+            {{messages.success}}
+        </div>
+      {{/if}}
+
+
+
+    <!-- Blog -->
+    <!-- Form -->
+
+  {{#if isLogin}}
+    <div style="text-align:right; margin-right: 100px; margin-top: 10px; padding-top: 30px">
+      <a href="/add-blog" style="background-color: darkgoldenrod; padding: 8px 20px; border-radius: 7px; color:rgb(78, 9, 9); text-decoration: none;" >New Add Blog</a>
+    </div>
+  {{/if}}
+
+    <div class="blog-img">
+    <div class="blog">
+      {{!-- <div class="blog-form">
+        <div class="form-container">
+          <form onsubmit="addBlog(event)">
+            <h1>Create Post Blog</h1>
+            <div>
+              <label for="input-blog-title">Title</label>
+              <input id="input-blog-title" />
+            </div>
+            <div>
+              <label for="input-blog-content">Content</label>
+              <textarea id="input-blog-content"></textarea>
+            </div>
+            <div>
+              <label>Upload Image</label>
+              <div class="input-blog-image-group">
+                <label for="input-blog-image">
+                  <p>Attach File</p>
+                  <img src="../public/assets/images/file.png" alt="file" />
+                </label>
+                <input type="file" id="input-blog-image" hidden />
+              </div>
+            </div>
+            <div class="button-group">
+              <button>Post Blog</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr class="line" /> --}}
+      <div id="contents" class="blog-list">
+        <!-- dynamic content would be here -->
+        {{#each blogs}}
+          <div class="blog-list-item">
+            <div class="blog-image">
+              <img src="../public/assets/images/blog-img-detail.png" alt="" />
+            </div>
+          
+            <div class="blog-content">
+            {{#if isLogin}}
+              <div class="btn-group">
+                <a href="/update-blog" class="btn-edit">Edit Post</a>
+                <a href="/delete-blog/{{this.id}}" class="btn-delete">Delete Blog</a>
+              </div>
+            {{/if}}
+          
+          
+              <h1>
+                <a href="/blog-detail/{{this.id}}" target="_blank"
+                >{{this.title}}</a>
+              </h1>
+              <div class="detail-blog-content">
+               {{this.postAt}} | {{this.author}}
+              </div>
+              <p>
+                {{this.content}}
+              </p>
+              <div class="update-time">
+                <span>{{this.distance}}</span>
+              </div>
+    
+        </div>
+          </div>
+        {{/each}}
+  </div>
+    <script src="script.js"></script>
+  </body>
+</html>
